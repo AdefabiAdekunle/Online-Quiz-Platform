@@ -1,0 +1,22 @@
+<div class='bg-danger text-white w-100 p-4' ng-show="instruction1">
+    <h4 class="text-center">You are about to start the test</h4>
+    <p>Read the instruction carefully before you Start</p>
+    <h5 class="text-center">Instruction:</h5>
+    <p>1. click the checkbox to select your preferable option.</p>
+    <p>2. you can only one option for each question</p>
+    <p>3. click the checkbox to select your preferable option</p>
+    <p>4. You can navigate through the questions using the next and previous button</p>
+    <button class=" bt-lg btn btn-secondary" type="submit" ng-click="start()">START</button>
+</div>
+<div class='bg-danger text-white w-100 p-4' ng-show="inprogress">
+    <h4 id="question">{{question}}</h4>
+    <p id="options" ng-repeat="option in options"><input type="radio" name="answer" ng-click="checkAnswer()" value="{{option}}">{{option}}</p>
+    <button class=" bt-lg btn btn-secondary" type="submit" ng-click="next()">Next</button>
+    <button class=" bt-lg btn btn-secondary" type="submit" ng-click="prev()">previous</button>
+    <span ng-show="!error1" class="text-danger">Please select an option</span>
+</div>
+<div class='bg-danger text-white w-100 p-4' ng-show="inprogressEnd">
+    <h1>Quiz is Over</h1>
+    <button class=" bt-lg btn btn-secondary" type="submit" ng-click="reset()">PLAY AGAIN</button> 
+    <div id="score"><h4>Zainab your score is {{score+"/5"}}</h4></div>
+</div>

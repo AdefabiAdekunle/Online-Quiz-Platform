@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>KunTech Online Quiz</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <style>
+        body {
+           background: url("../img/Chrysanthemum.jpg"); 
+        }
+        </style>
+    </head>
+    <body ng-app="quizApp">
+        <div class="jumbotron jumbotron-fluid text-center bg-danger  p-1">
+            <h1>KunTech Online Quiz Application Platform</h1>
+            <h5>Test your level of Intelligence</h5>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                </div>
+                <div class="col-6" ng-controller="validateCtrl" >
+                    <form id="form" name="myForm" novalidate>
+                        <h3 class="text-warning text-center">Register your details to take the test</h3>
+                        <p class="text-warning">Firstname:<br>
+                            <input id="fn" class="form-control" type="text" name="user" ng-model="user" required>
+                            <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                            <span ng-show="myForm.user.$error.required">Username is required.</span>
+                            </span>    
+                        </p>
+                         
+                        <p class="text-warning">Phone Number:<br>
+                            <input id="ph" class="form-control" type="number" name="ph" ng-model="ph" required>
+                            <span style="color:red" ng-show="myForm.ph.$dirty && myForm.ph.$invalid">
+                            <span ng-show="myForm.ph.$error.required">Phone Number is required.</span>
+                            </span>    
+                        </p>
+                        <p class="text-warning">Email:<br>
+                            <input id="em" class="form-control" type="email" name="email" ng-model="email" required>
+                            <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                            <span ng-show="myForm.email.$error.required">Email is required.</span>
+                            <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                            </span>
+                        </p>
+                                
+                        <p class="text-center text-warning">
+                            <button id="sub" type="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||  
+                                myForm.email.$dirty && myForm.email.$invalid ||myForm.ph.$dirty && myForm.ph.$invalid">REGISTER</button>&nbsp;&nbsp;
+                            Click here to Login if you have registered
+                            <button type="submit" id="log">LOGIN</button>
+                        </p>
+                    </form>
+                    <form id="form2" class="d-none" 
+                    name="myForm2" novalidate>
+                        <h3 class="text-warning text-center">Login to Start the Test</h3>
+                        <p class="text-warning">Firstname:<br>
+                            <input id="fn1" class="form-control" type="text" name="user1" ng-model="user1" required>
+                            <span style="color:red" ng-show="myForm2.user1.$dirty && myForm2.user1.$invalid">
+                            <span ng-show="myForm2.user1.$error.required">Username is required.</span>
+                            </span>    
+                        </p>
+                         
+                        <p class="text-warning">Email:<br>
+                            <input id="em1" class="form-control" type="email" name="email1" ng-model="email1" required>
+                            <span style="color:red" ng-show="myForm2.email1.$dirty && myForm2.email1.$invalid">
+                            <span ng-show="myForm2.email1.$error.required">Email is required.</span>
+                            <span ng-show="myForm2.email1.$error.email">Invalid email address.</span>
+                            </span>
+                        </p>
+                                
+                        <p class="text-center text-warning">
+                            <button id="sub1" type="submit" ng-disabled="myForm2.user1.$dirty && myForm2.user1.$invalid ||  
+                                myForm2.email1.$dirty && myForm2.email1.$invalid">LOGIN</button>
+                        </p>
+                        <h3 class="text-warning" id="before"></h3>
+                    </form>
+                    <div id="alert" class="alert alert-success alert-dismissible d-none">
+                        <button id="close" type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Success! </strong>You have successfully registered please click on the close button to login
+                    </div>
+                    <quiz id="quiz" class="d-none"></quiz>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+        <script src="controller.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
